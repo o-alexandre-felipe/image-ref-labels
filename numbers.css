@@ -1,0 +1,10 @@
+input[type=number] {
+  text-align: right;
+}
+canvas#editor {
+  background-color: #d0d0d0;
+}
+#image-editor{
+  text-align: center;
+  background-color: #f0f0e0;
+}
