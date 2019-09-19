@@ -47,8 +47,8 @@ function Editor(canvas){
     if(e.buttons != 1)return;
     if(this.selectedIndex < this.notes.length && this.selectedIndex >= 0){
       var clientRect = e.target.getBoundingClientRect();
-      var clickX = e.clientX - clientRect.x;
-      var clickY = e.clientY - clientRect.y;
+      var clickX = e.clientX - (clientRect.x || clientRect.left);
+      var clickY = e.clientY - (clientRect.y || clientRect.top);
       this.notes[this.selectedIndex] = {x: clickX, y: clickY};
       this.repaint();
     }
