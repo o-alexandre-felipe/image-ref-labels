@@ -27,8 +27,10 @@ function Editor(canvas){
     
       // remove the closest point
       var clientRect = e.target.getBoundingClientRect();
-      var clickX = e.clientX - clientRect.x;
-      var clickY = e.clientY - clientRect.y;
+      // https://caniuse.com/#feat=getboundingclientrect
+      // Some browsers return clientRect without x&y.
+      var clickX = e.clientX - (clientRect.x || clientRect.left);
+      var clickY = e.clientY - (clientRect.y || clientRect.top);
       for(let ii = this.notes.length-1; ii>=0; --ii){
         var dx = clickX - this.notes[ii].x;
         var dy = clickY - this.notes[ii].y;
