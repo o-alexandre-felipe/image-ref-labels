@@ -29,8 +29,8 @@ function Editor(canvas){
       var clientRect = e.target.getBoundingClientRect();
       // https://caniuse.com/#feat=getboundingclientrect
       // Some browsers return clientRect without x&y.
-      var clickX = e.clientX - (clientRect.x || clientRect.left);
-      var clickY = e.clientY - (clientRect.y || clientRect.top);
+      var clickX = e.clientX - (clientRect.x || clientRect.left || 0);
+      var clickY = e.clientY - (clientRect.y || clientRect.top || 0);
       for(let ii = this.notes.length-1; ii>=0; --ii){
         var dx = clickX - this.notes[ii].x;
         var dy = clickY - this.notes[ii].y;
@@ -47,8 +47,8 @@ function Editor(canvas){
     if(e.buttons != 1)return;
     if(this.selectedIndex < this.notes.length && this.selectedIndex >= 0){
       var clientRect = e.target.getBoundingClientRect();
-      var clickX = e.clientX - (clientRect.x || clientRect.left);
-      var clickY = e.clientY - (clientRect.y || clientRect.top);
+      var clickX = e.clientX - (clientRect.x || clientRect.left || 0);
+      var clickY = e.clientY - (clientRect.y || clientRect.top || 0);
       this.notes[this.selectedIndex] = {x: clickX, y: clickY};
       this.repaint();
     }
